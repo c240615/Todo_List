@@ -1,0 +1,23 @@
+
+<ul class="list-group">
+  <!-- 三花括號 解讀 HTML -->  
+  <!-- 雙花括號 解讀純文字 -->  
+  {{#each todos}} 
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <!-- disabled 禁止使用者更動的元素-->
+          <input type="checkbox" name="isDone" {{#if this.isDone}} checked {{/if}} disabled>
+          <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
+        </div>
+        <div class="col-auto">
+          <a href="./todos/{{ this._id }}" class="btn btn-secondary">detail</a>
+          <a href="./todos/{{ this._id }}/edit" class="btn btn-success">edit</a>
+          <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-danger">delete</button>
+          </form>          
+        </div>
+      </div>
+    </li>
+  {{/each}}
+</ul>
